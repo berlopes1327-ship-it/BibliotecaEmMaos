@@ -34,7 +34,8 @@ Aplicativo Android acadêmico para gerenciamento de uma biblioteca pessoal. O us
 - **Cadastro:** possui título, autor, ano, gênero, número de páginas e resumo. Título e autor são obrigatórios; ano deve estar entre 1000 e 2100; número de páginas deve ser um inteiro positivo. Dados inválidos exibem mensagens e não são salvos.
 - **Identificador:** cada livro cadastrado recebe um UUID automaticamente.
 - **Detalhes:** a rota recebe o ID do livro como argumento, pesquisa na coleção compartilhada e exibe todos os campos. Um ID desconhecido apresenta uma mensagem em vez de encerrar o aplicativo.
-- **Navegação:** quatro destinos registrados no `NavHost`. O cadastro e a tela Sobre/Ajuda retornam com `popBackStack`, preservando o fluxo de retorno à lista.
+- **Navegação:** quatro destinos registrados no `NavHost`. As telas Cadastro, Detalhes e Sobre/Ajuda possuem botão visível **Voltar** na barra superior, além das ações de retorno no conteúdo. A tela inicial é a raiz da pilha e não apresenta botão de retorno interno.
+- **Rolagem:** a listagem da tela inicial utiliza `LazyColumn`, apropriada para uma coleção de livros. O formulário, os detalhes de um único livro e a tela Sobre/Ajuda usam rolagem vertical comum, pois apresentam conteúdo único em vez de uma lista de itens. O cadastro e a tela Sobre/Ajuda retornam com `popBackStack`, preservando o fluxo de retorno à lista.
 - **Compartilhamento:** o botão da tela Sobre/Ajuda abre o seletor do Android usando `Intent.ACTION_SEND` com conteúdo `text/plain`; uma `ActivityNotFoundException` é tratada com uma mensagem.
 - **Estado:** a mesma instância de `BibliotecaStore` é criada acima do `NavHost` e compartilhada entre as telas. A lista é observável pelo Compose e atualiza a interface quando um livro é incluído.
 
